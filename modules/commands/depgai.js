@@ -1,0 +1,15 @@
+module.exports.config = {
+  name: "depgai",
+  version: "0.0.1",
+  hasPermssion: 0,
+  credits: "SEN",
+  description: "đo độ đẹp gái",
+  commandCategory: "other",
+  cooldowns: 5
+};
+
+module.exports.run = function({ api, event }) {
+  const data = ["Your beauty is 1%", "Your beauty is 2%", "Your beauty is 3%", "Your beauty is 4%", "Your handsomeness is 5%", "Your beauty is 6%", "Your beauty is 7%", "Your handsomeness is 8%", "Your handsomeness is 9%", "Your beauty is 9%", "your beauty is 10%", "your beauty is 11%", "your handsomeness is 12%", "your handsomeness is 13%", "your handsomeness is 14 %", "Your beauty is 15%", "Your beauty is 16%", "Your beauty is 17%", "Your beauty is 18%", "Pretty your girlishness is 19%", "your beauty is 20%", "your beauty is 21%", "your handsomeness is 22%", "your handsomeness is 23% ", "Your beauty is 24%", "Your beauty is 25%", "Your beauty is 26%", "Your handsomeness is 27%", "Pretty is your girlishness is 27%","your beauty is 28%", "Your beauty is 29%", "Your beauty is 30%", "Your beauty is 31%", "Your beauty is 32%" , "Your beauty is 33%", "Your beauty is 34%", "Your beauty is 3 5%", "Your beauty is 36%", "Your beauty is 37%", "Your beauty is 38%", "Your beauty is 39%", "Your beauty is 39%", "your handsomeness is 40%", "your handsomeness is 41%", "your handsomeness is 42%", "your handsomeness is 43%", "your handsomeness is 44 %", "Your beauty is 45%", "Your beauty is 46%", "Your beauty is 47%", "Your beauty is 48%", "Pretty your girlishness is 49%", "your beauty is 50%", "your beauty is 51%", "your beauty is 52%", "your beauty is 53% ", "Your beauty is 54%", "Your beauty is 55%", "Your beauty is 56%", "Your handsomeness is 57%", "Pretty girly", "your beauty is 58%", "Your beauty is 59%", "Your beauty is 60%", "Your handsomeness is 61%", "Your beauty is 62%" , "Your beauty is 63%", "Your beauty is 64%", "Your beauty is 65%", "Your beauty is 66%", "My beauty is 66%", "you are 67%", "Your beauty is 68%", "Your beauty is 69%", "Your beauty is 69%", "your love is 70%", "Your beauty is 71%", "Your beauty is 72%", "Your handsomeness is 73%", "Your handsomeness is 74% ", "Your beauty is 75%", "Your beauty is 76%", "Your beauty is 77%", "Your handsomeness is 78%", "Pretty girly", "your beauty is 79%", "Your beauty is 80%", "Your beauty is 81%", "Your handsomeness is 82%", "Your handsomeness is 83%" , "Your beauty is 84%", "Your beauty is 85%", "Your beauty is 86%", "Your beauty is 87%", "Your beauty is 87%", "you are 88%", "Your beauty is 89%", "Your beauty is 90%", "Your handsomeness is 91%", "Your beauty is 92%", "Your beauty is 93%", "Your beauty is 94%", "Your beauty is 95%", "Your beauty is 96%", "Your handsomeness is is 97%", "Your beauty is 98%", "Your beauty is 99%", "Your beauty is 100%",
+  ];
+  return api.sendMessage(`${data[Math.floor(Math.random() * data.length)]}`, event.threadID, event.messageID);
+}

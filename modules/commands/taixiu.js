@@ -1,0 +1,64 @@
+module.exports.config = {
+    name: "taixiu",
+    version: "1.0.0",
+    hasPermssion: 0,
+    credits: "D-Jukie",
+    description: "Play poker",
+    commandCategory: "Entertain",
+    usages: "[over/under]",
+    cooldowns: 5
+};
+module.exports.run = async function ({
+    api,
+    event,
+    args,
+    Currencies,
+    Users
+}) {
+    const axios = global.nodemodule['axios'];
+    const fs = global.nodemodule["fs-extra"];
+    const dataMoney = await Currencies.getData(event.senderID);
+    const moneyUser = dataMoney.money
+    if (!args[0]) {
+        return api.sendMessage("You must bet over or under...", event.threadID, event.messageID)
+    }
+    const choose = args[0]
+    if (choose != 'talent' && choose != 'faint') {
+        api.sendMessage("Only bet over or under!", event.threadID, event.messageID)
+    }
+    const money = args[1]
+    if (money < 50 || isNaN(money)) return api.sendMessage("Your bet level is not suitable or less than 50$!!!", event.threadID, event.messageID);
+    if (moneyUser < money) api.sendMessage(`⚡️Your balance is not enough ${money}$ to be able to play`, event.threadID, event.messageID);
+    else {
+    try {
+        var data = res.data;
+        var ketqua = data.ketqua
+        var ketquaGame = ketqua.slice(0, 3)
+        if (choose == ketquaGame) {
+            pathus = __dirname + `/cache/${event.senderID}.png`
+            var img = (await axios.get(`${data.image}`, {
+                responseType: "arraybuffer"
+            })).data;
+            fs.writeFileSync(pathus, Buffer.from(img, "utf-8"));
+            await Currencies.increaseMoney(event.senderID, parseInt(money * 2))
+            return api.sendMessage({
+                body: `You won \Okay: ${money*2}$\nResult: ${ketqua.charAt(0).toUpperCase() + ketqua.slice(1)}`,
+                attachment: fs.createReadStream(__dirname + `/cache/${event.senderID}.png`)
+            }, event.threadID, () => fs.unlinkSync(__dirname + `/cache/${event.senderID}.png`), event.messageID)
+        } else {
+            pathus = __dirname + `/cache/${event.senderID}.png`
+            var img = (await axios.get(`${data.image}`, {
+                responseType: "arraybuffer"
+            })).data;
+            fs.writeFileSync(pathus, Buffer.from(img, "utf-8"));
+            await Currencies.decreaseMoney(event.senderID, parseInt(money))
+            return api.sendMessage({
+                body: `You have lost\nLost: ${money}$\nResult: ${ketqua.charAt(0).toUpperCase() + ketqua.slice(1)}`,
+                attachment: fs.createReadStream(__dirname + `/cache/${event.senderID}.png`)
+            }, event.threadID, () => fs.unlinkSync(__dirname + `/cache/${event.senderID}.png`), event.messageID)
+        }
+    } catch {
+        return api.sendMessage('Something went wrong, please try again later!!!', event.threadID, event.messageID);
+    }
+}
+              }
