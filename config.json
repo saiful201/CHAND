@@ -14,10 +14,10 @@
     "EMAIL": "",
     "PASSWORD": "",
     "OTPKEY": "",
-    "BOTNAME": "JADU-BOT",
-    "PREFIX": "#",
+    "BOTNAME": "SAIFUL-BOT",
+    "PREFIX": ".",
     "ADMINBOT": [
-        "100072727941471",
+        "100011152309303",
         "",
         ""
     ],
